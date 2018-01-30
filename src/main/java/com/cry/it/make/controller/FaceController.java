@@ -8,7 +8,7 @@ import java.util.Map;
 @Controller
 public class FaceController {
 
-    @GetMapping()
+    @GetMapping("/face")
     public String face(Map<String, Object> model) {
         model.put("face", "smile");
         return "face";

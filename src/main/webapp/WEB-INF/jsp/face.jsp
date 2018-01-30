@@ -6,7 +6,7 @@
 <html lang="en">
 
 <body>
-	Face: ${face}
+	<img src="/${face}.png">
 </body>
 
 </html>
