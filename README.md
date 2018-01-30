@@ -1,7 +1,7 @@
 Just make it cry
 ================
 
-1. Change the *smile* to *cry* in `FaceController.java` to make a new version for deployment.
+1. Change "smile" in `Face.java` to "cry"
 
 2. once deployed, go to http://host:port/face to see your applicaiton crying
 
