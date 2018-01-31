@@ -9,7 +9,7 @@
     <artifactId>make-it-cry</artifactId>
     <name>make-it-cry</name>
 
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
     <description>Just make it cry</description>
     <version>1.0</version>
 
