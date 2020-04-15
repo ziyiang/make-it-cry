@@ -18,7 +18,7 @@ pipeline {
                 dir('wangshuai') {
 //                     sh 'kill -9 $(lsof -t -i:8000)'
                     sh '''
-                        if [ -z "$(lsof -t -i:8000)" ];then
+                        if [ "$(lsof -t -i:8000)" ];then
                             kill -9 $(lsof -t -i:8000)
                         fi
                     '''
