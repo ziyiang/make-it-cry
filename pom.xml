@@ -11,7 +11,7 @@
 
     <packaging>war</packaging>
     <description>Just make it cry</description>
-    <version>1.0</version>
+    <version>1.0-SNAPSHOT</version>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -68,7 +68,7 @@
         <repository>
             <id>central</id>
             <name>1a9fbb10d67e-releases</name>
-            <url>http://47.96.237.96:8081/artifactory/libs-release</url>
+            <url>http://47.96.237.96:8081/artifactory/libs-snapshot</url>
         </repository>
     </distributionManagement>
 
