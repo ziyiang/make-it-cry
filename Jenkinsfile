@@ -4,12 +4,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh './mvnw package'
+                sh 'mvn package'
             }
         }
         stage('Publish') {
             steps {
-                sh './mvnw deploy'
+                sh 'mvn deploy'
             }
         }
         stage('Deploy DEV') {
