@@ -15,10 +15,13 @@ pipeline {
             }
         }
         stage('Deploy DEV') {
+            environment {
+                SERVER_PORT = "8000"
+            }
             steps {
                 sh '''
-                    if [ "$(lsof -t -i:8000)" ];then
-                        kill -9 $(lsof -t -i:8000)
+                    if [ "$(lsof -t -i:${SERVER_PORT})" ];then
+                        kill -9 $(lsof -t -i:${SERVER_PORT})
                     fi
                 '''
                 sh '''
@@ -34,7 +37,7 @@ pipeline {
                     -Dartifact=sample:make-it-cry:1.0-SNAPSHOT:war \
                     -DoutputDirectory=.
                 '''
-                sh 'JENKINS_NODE_COOKIE=dontKillMe SERVER_PORT=8000 nohup java -jar make-it-cry-1.0-SNAPSHOT.war &'
+                sh 'JENKINS_NODE_COOKIE=dontKillMe nohup java -jar make-it-cry-1.0-SNAPSHOT.war &'
             }
         }
     }
