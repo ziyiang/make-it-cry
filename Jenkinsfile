@@ -30,10 +30,6 @@ pipeline {
                         kill -9 $(lsof -t -i:${SERVER_PORT})
                     fi
                 '''
-                sh '''
-                    echo 'debug:'
-                    echo ${GROUP_ID}:${ARTIFACT_ID}:${VERSION}:war
-                '''
 
                 sh '''
                     mvn dependency:get \
