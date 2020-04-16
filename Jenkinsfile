@@ -1,4 +1,4 @@
-def appPort = "8000"
+// def appPort = "8000"
 
 pipeline {
     agent any
@@ -19,8 +19,8 @@ pipeline {
                 sh 'mkdir -p wangshuai'
                 dir('wangshuai') {
                     sh '''
-                        if [ "$(lsof -t -i:$appPort)" ];then
-                            kill -9 $(lsof -t -i:$appPort)
+                        if [ "$(lsof -t -i:8000)" ];then
+                            kill -9 $(lsof -t -i:8000)
                         fi
                     '''
                     sh '''
@@ -36,7 +36,7 @@ pipeline {
                         -Dartifact=sample:make-it-cry:1.0-SNAPSHOT:war \
                         -DoutputDirectory=.
                     '''
-                    sh 'nohup SERVER_PORT=$appPort java -jar make-it-cry-1.0-SNAPSHOT.war > log.out &'
+                    sh 'nohup SERVER_PORT=8000 java -jar make-it-cry-1.0-SNAPSHOT.war > log.out &'
                 }
             }
         }
