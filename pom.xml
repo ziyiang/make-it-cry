@@ -5,8 +5,8 @@
 	http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>sample</groupId>
-    <artifactId>make-it-cry</artifactId>
+    <groupId>lzx</groupId>
+    <artifactId>make-it-cry-lzx</artifactId>
     <name>make-it-cry</name>
 
     <packaging>war</packaging>
