@@ -1,3 +1,5 @@
+def appPort = "8000"
+
 pipeline {
     agent any
     options { disableConcurrentBuilds() }
@@ -17,13 +19,24 @@ pipeline {
                 sh 'mkdir -p wangshuai'
                 dir('wangshuai') {
                     sh '''
-                        if [ "$(lsof -t -i:8000)" ];then
-                            kill -9 $(lsof -t -i:8000)
+                        if [ "$(lsof -t -i:$appPort)" ];then
+                            kill -9 $(lsof -t -i:$appPort)
                         fi
                     '''
-                    sh 'curl -O http://47.96.237.96:8082/artifactory/libs-snapshot-local/sample/make-it-cry/1.0-SNAPSHOT/make-it-cry-1.0-20200415.192751-11.war'
-//                     sh 'curl -O http://47.96.237.96:8082/artifactory/libs-release/sample/make-it-cry/1.0/make-it-cry-1.0.war'
-                    sh 'SERVER_PORT=8000 java -jar make-it-cry-1.0-20200415.192751-11.war'
+                    sh '''
+                        mvn dependency:get \
+                        -DremoteRepositories=http://47.96.237.96:8082/artifactory/libs-snapshot \
+                        -DgroupId=sample \
+                        -DartifactId=make-it-cry \
+                        -Dversion=1.0-SNAPSHOT \
+                        -Dpackaging=war \
+                        -Dtransitive=false
+
+                        mvn dependency:copy \
+                        -Dartifact=sample:make-it-cry:1.0-SNAPSHOT:war \
+                        -DoutputDirectory=.
+                    '''
+                    sh 'nohup SERVER_PORT=$appPort java -jar make-it-cry-1.0-SNAPSHOT.war > log.out &'
                 }
             }
         }
