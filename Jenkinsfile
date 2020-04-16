@@ -1,5 +1,3 @@
-// def appPort = "8000"
-
 pipeline {
     agent any
     options { disableConcurrentBuilds() }
