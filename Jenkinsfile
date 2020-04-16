@@ -36,7 +36,7 @@ pipeline {
                         -Dartifact=sample:make-it-cry:1.0-SNAPSHOT:war \
                         -DoutputDirectory=.
                     '''
-                    sh 'SERVER_PORT=8000 nohup java -jar make-it-cry-1.0-SNAPSHOT.war > log.out &'
+                    sh 'SERVER_PORT=8000 java -jar make-it-cry-1.0-SNAPSHOT.war'
                 }
             }
         }
